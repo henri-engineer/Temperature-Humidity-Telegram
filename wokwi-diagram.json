@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Henri Cruz",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -41.4, "left": 204.4, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -52.9, "left": 23.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -9.6, "left": 537, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -95.24, "left": 537.6, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc2", "top": 96.76, "left": 556.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 182.4, "left": 556.2, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 266.3, "left": 308, "rotate": 90, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -38.1, "left": 666.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd3",
+      "top": -569.6,
+      "left": 255.2,
+      "attrs": { "pins": "i2c", "i2c-address": "0x27" }
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd4",
+      "top": -377.6,
+      "left": 716,
+      "attrs": { "pins": "i2c", "i2c-address": "0x20" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "bb1:tn.25", "gnd1:GND", "green", [ "v-0.1", "h40" ] ],
+    [ "vcc1:VCC", "bb1:tp.25", "red", [ "v38.4", "h-38.4" ] ],
+    [ "vcc2:VCC", "bb1:bp.25", "red", [ "v19.2", "h-57.6" ] ],
+    [ "gnd2:GND", "bb1:bn.25", "black", [ "v0" ] ],
+    [ "rtc1:GND", "bb1:bn.14", "black", [ "v0" ] ],
+    [ "rtc1:5V", "bb1:bp.13", "red", [ "v0" ] ],
+    [ "rtc1:SDA", "esp:D21", "green", [ "v-86.4", "h-172.5", "v-172.4" ] ],
+    [ "rtc1:SCL", "esp:D22", "blue", [ "v-76.8", "h-172.6", "v-210.9" ] ],
+    [ "dht1:VCC", "bb1:bp.24", "red", [ "v48", "h-184" ] ],
+    [ "dht1:GND", "bb1:bn.24", "black", [ "v0" ] ],
+    [ "esp:D15", "dht1:SDA", "cyan", [ "h0" ] ],
+    [ "lcd3:GND", "bb1:tn.2", "black", [ "h0" ] ],
+    [ "lcd3:VCC", "bb1:tp.1", "red", [ "h0" ] ],
+    [ "lcd4:GND", "bb1:tn.23", "black", [ "h0" ] ],
+    [ "lcd4:VCC", "bb1:tp.24", "red", [ "h0" ] ],
+    [ "esp:D21", "lcd3:SDA", "green", [ "h66.9", "v-528.6" ] ],
+    [ "esp:D22", "lcd3:SCL", "blue", [ "h57.3", "v-490.2" ] ],
+    [ "esp:D22", "lcd4:SCL", "blue", [ "h57.3", "v-298.2" ] ],
+    [ "esp:D21", "lcd4:SDA", "green", [ "h66.9", "v-336.6" ] ]
+  ],
+  "dependencies": {},
+  "services": {
+  "wifi": {
+    "ssid": "Wokwi-GUEST",
+    "password": ""
+  }
+}
+}
