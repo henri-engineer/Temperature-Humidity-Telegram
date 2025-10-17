@@ -1,0 +1,1527 @@
+[
+    {
+        "id": "255efaf03868a262",
+        "type": "tab",
+        "label": "CP03 - DHT22 + Telegram (Grupo)",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6dfe49a4f54fe025",
+        "type": "mqtt in",
+        "z": "255efaf03868a262",
+        "name": "",
+        "topic": "sensor/dht22henri",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "78bde57542f414d1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "19fac0d5c56308ad",
+                "6d93a39b09922fb5",
+                "a4588947749246d6",
+                "e5efadbded39c920"
+            ]
+        ]
+    },
+    {
+        "id": "7988220f8fe5dd08",
+        "type": "mqtt out",
+        "z": "255efaf03868a262",
+        "name": "",
+        "topic": "sensor/dht22henri",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "78bde57542f414d1",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "667dc6a19eac8695",
+        "type": "inject",
+        "z": "255efaf03868a262",
+        "name": "inject mock values",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"temperatura\":18,\"umidade\":55}",
+        "payloadType": "str",
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "7988220f8fe5dd08"
+            ]
+        ]
+    },
+    {
+        "id": "19fac0d5c56308ad",
+        "type": "debug",
+        "z": "255efaf03868a262",
+        "name": "debug mqtt mosquito",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ed1796d8ecbe789d",
+        "type": "ui-gauge",
+        "z": "255efaf03868a262",
+        "name": "CP03 - Temp Gauge",
+        "group": "2667965c1ca681c6",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge",
+        "gstyle": "needle",
+        "title": "Temperature Gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-10",
+                "color": "#0befd4"
+            },
+            {
+                "from": "10",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "38",
+                "color": "#ffc800"
+            },
+            {
+                "from": "42",
+                "color": "#ea5353"
+            }
+        ],
+        "min": "-10",
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": true,
+        "className": "",
+        "x": 740,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bc07b101c1d9973",
+        "type": "ui-text",
+        "z": "255efaf03868a262",
+        "group": "2667965c1ca681c6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "CP03 - Temp Number",
+        "label": "Temperature:",
+        "format": "{{msg.payload}}°C",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 24,
+        "color": "#333",
+        "wrapText": false,
+        "className": "",
+        "x": 740,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d18ff976e1beeed1",
+        "type": "ui-template",
+        "z": "255efaf03868a262",
+        "group": "58b04e07090bca54",
+        "page": "",
+        "ui": "",
+        "name": "Header CP Logos",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <div class=\"header-logos\">\n    <img src=\"https://i0.wp.com/innovationweeksjc.com.br/wp-content/uploads/2024/08/Artboard-1.png?fit=854%2C403&ssl=1\" alt=\"University Logo\" class=\"logo\">\n    <img src=\"https://paulocruzautomacoes.com.br/wp-content/uploads/2025/09/enki.png\" alt=\"Group Logo\" class=\"logo\">\n    <img src=\"https://br.mouser.com/images/suppliers/wokwi.png\" alt=\"Platform Logo\" class=\"logo\">\n  </div>\n</template>\n\n<style>\n  .header-logos {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n    margin-bottom: 15px;\n  }\n  .header-logos .logo {\n    max-height: 60px;\n    object-fit: contain;\n  }\n</style>\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 910,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9dc67d04ed21ee92",
+        "type": "ui-template",
+        "z": "255efaf03868a262",
+        "group": "2667965c1ca681c6",
+        "page": "",
+        "ui": "",
+        "name": "CP03 - Temperature Conditions",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "head": "",
+        "format": "<template>\n  <h3 style=\"text-align:center\">🌡️ Condition</h3>\n  <table style=\"text-align:center; width:100%\">\n    <tr><th>Range</th><th>Status</th><th>Flag</th></tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= -10) && (Number(msg?.payload ?? NaN) <= 10)}\">\n      <td>-10°C to 10°C</td><td>Cold</td><td>❄️</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= 11) && (Number(msg?.payload ?? NaN) < 38)}\">\n      <td>11°C to 38°C</td><td>Ideal</td><td>✅</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= 38) && (Number(msg?.payload ?? NaN) <= 43)}\">\n      <td>38°C to 42°C</td><td>Hot</td><td>⚠️</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) > 43)}\">\n      <td>>43°C</td><td>Danger</td><td>⛔</td>\n    </tr>\n  </table>\n</template>\n<style>\n  tr { background: #f9f9f9; }\n  .active { background: linear-gradient(45deg, #4a90e2, #7b68ee) !important; color: white; font-weight: bold; }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 770,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2865ab0c71bf9426",
+        "type": "ui-chart",
+        "z": "255efaf03868a262",
+        "group": "2667965c1ca681c6",
+        "name": "CP03 - Temp Graph",
+        "label": "Temperature Trend",
+        "order": 4,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "ymin": "-10",
+        "ymax": "50",
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "colors": [
+            "#ff7300"
+        ],
+        "width": 6,
+        "height": "4",
+        "className": "",
+        "x": 740,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d93a39b09922fb5",
+        "type": "change",
+        "z": "255efaf03868a262",
+        "name": "Temp Values",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperatura",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "2bc07b101c1d9973",
+                "ed1796d8ecbe789d",
+                "2865ab0c71bf9426",
+                "9dc67d04ed21ee92"
+            ]
+        ]
+    },
+    {
+        "id": "a4588947749246d6",
+        "type": "change",
+        "z": "255efaf03868a262",
+        "name": "Humid Values",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.umidade",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 500,
+        "wires": [
+            [
+                "b5b7394202caa024",
+                "9edfcfe8f4ed2902",
+                "d282d8864f23b855",
+                "65988013228182ef"
+            ]
+        ]
+    },
+    {
+        "id": "b5b7394202caa024",
+        "type": "ui-text",
+        "z": "255efaf03868a262",
+        "group": "264fd145aa2e9f8b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "CP03 - Humid Number",
+        "label": "Humidity:",
+        "format": "{{msg.payload}}%",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 24,
+        "color": "#333",
+        "wrapText": false,
+        "className": "",
+        "x": 740,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9edfcfe8f4ed2902",
+        "type": "ui-gauge",
+        "z": "255efaf03868a262",
+        "name": "CP03 - Humid Gauge",
+        "group": "264fd145aa2e9f8b",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge",
+        "gstyle": "needle",
+        "title": "Humidity Gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ea5353"
+            },
+            {
+                "from": "30",
+                "color": "#ff7300"
+            },
+            {
+                "from": "50",
+                "color": "#5cd65c"
+            },
+            {
+                "from": "70",
+                "color": "#0095ff"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": true,
+        "className": "",
+        "x": 740,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d282d8864f23b855",
+        "type": "ui-template",
+        "z": "255efaf03868a262",
+        "group": "264fd145aa2e9f8b",
+        "page": "",
+        "ui": "",
+        "name": "CP03 - Humidity Conditions",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "head": "",
+        "format": "<template>\n  <h3 style=\"text-align:center\">💧 Condition</h3>\n  <table style=\"text-align:center; width:100%\">\n    <tr><th>Range</th><th>Status</th><th>Flag</th></tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= 0) && (Number(msg?.payload ?? NaN) <= 30)}\">\n      <td>0% to 30%</td><td>Very Dry</td><td>☀️</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= 31) && (Number(msg?.payload ?? NaN) < 50)}\">\n      <td>31% to 50%</td><td>Dry</td><td>🌤️</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) >= 50) && (Number(msg?.payload ?? NaN) <= 60)}\">\n      <td>50% to 60%</td><td>Ideal</td><td>💧</td>\n    </tr>\n    <tr :class=\"{active: (Number(msg?.payload ?? NaN) > 60)}\">\n      <td>>61%</td><td>Too Wet</td><td>💦</td>\n    </tr>\n  </table>\n</template>\n<style>\n  tr { background: #f9f9f9; }\n  .active { background: linear-gradient(45deg, #4a90e2, #7b68ee) !important; color: white; font-weight: bold; }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 760,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "65988013228182ef",
+        "type": "ui-chart",
+        "z": "255efaf03868a262",
+        "group": "264fd145aa2e9f8b",
+        "name": "CP03 - Humid Graph",
+        "label": "Humidity Trend",
+        "order": 4,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "ymin": "0",
+        "ymax": "100",
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "colors": [
+            "#0095ff"
+        ],
+        "width": 6,
+        "height": "4",
+        "className": "",
+        "x": 740,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8addcd457b982fc3",
+        "type": "ui-markdown",
+        "z": "255efaf03868a262",
+        "group": "58b04e07090bca54",
+        "name": "Wokwi link",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "content": "[🔗 Wokwi Project](https://wokwi.com/projects/444377926004046849)",
+        "className": "",
+        "x": 990,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5efadbded39c920",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Armazena dados recebidos",
+        "func": "// Extrai e valida os dados recebidos\nlet temperatura = Number(msg.payload.temperatura);\nlet umidade = Number(msg.payload.umidade);\n\n// Verifica se os dados são válidos\nif (isNaN(temperatura) || isNaN(umidade)) {\n    node.error(\"Dados inválidos: \" + JSON.stringify(msg.payload));\n    return null;\n}\n\nif (temperatura < -50 || temperatura > 100 || umidade < 0 || umidade > 100) {\n    node.error(\"Dados fora do range: T=\" + temperatura + \" U=\" + umidade);\n    return null;\n}\n\n// 1. Armazena última medição\nlet ultimaMedicao = {\n    temperatura: temperatura,\n    umidade: umidade,\n    timestamp: new Date().toISOString()\n};\nglobal.set(\"ultimaMedicao\", ultimaMedicao);\n\n// 2. Atualiza histórico\nlet historico = global.get(\"historico\");\nif (!historico || !Array.isArray(historico)) {\n    historico = [];\n}\n\nhistorico.push({\n    temperatura: temperatura,\n    umidade: umidade,\n    timestamp: new Date().toISOString()\n});\n\nwhile (historico.length > 480) {\n    historico.shift();\n}\n\nglobal.set(\"historico\", historico);\n\n// 3. Calcula média\nif (historico.length > 0) {\n    let somaTemp = 0;\n    let somaUmid = 0;\n    let countTemp = 0;\n    let countUmid = 0;\n    \n    for (let i = 0; i < historico.length; i++) {\n        let registro = historico[i];\n        let t = Number(registro.temperatura);\n        let u = Number(registro.umidade);\n        \n        if (!isNaN(t) && t >= -50 && t <= 100) {\n            somaTemp += t;\n            countTemp++;\n        }\n        if (!isNaN(u) && u >= 0 && u <= 100) {\n            somaUmid += u;\n            countUmid++;\n        }\n    }\n    \n    let mediaTemp = countTemp > 0 ? Math.round((somaTemp / countTemp) * 10) / 10 : 0;\n    let mediaUmid = countUmid > 0 ? Math.round((somaUmid / countUmid) * 10) / 10 : 0;\n    \n    global.set(\"media24h\", {\n        temperatura: mediaTemp,\n        umidade: mediaUmid,\n        quantidadeLeituras: historico.length\n    });\n}\n\n// 4. Calcula máximos e mínimos\nif (historico.length > 0) {\n    let tmax = -Infinity;\n    let tmin = Infinity;\n    let umax = -Infinity;\n    let umin = Infinity;\n    \n    for (let i = 0; i < historico.length; i++) {\n        let registro = historico[i];\n        let t = Number(registro.temperatura);\n        let u = Number(registro.umidade);\n        \n        if (!isNaN(t) && t >= -50 && t <= 100) {\n            if (t > tmax) tmax = t;\n            if (t < tmin) tmin = t;\n        }\n        if (!isNaN(u) && u >= 0 && u <= 100) {\n            if (u > umax) umax = u;\n            if (u < umin) umin = u;\n        }\n    }\n    \n    if (tmax === -Infinity) tmax = 0;\n    if (tmin === Infinity) tmin = 0;\n    if (umax === -Infinity) umax = 0;\n    if (umin === Infinity) umin = 0;\n    \n    tmax = Math.round(tmax * 10) / 10;\n    tmin = Math.round(tmin * 10) / 10;\n    umax = Math.round(umax * 10) / 10;\n    umin = Math.round(umin * 10) / 10;\n    \n    let periodoHoras = Math.round((historico.length * 3 / 60) * 10) / 10;\n    \n    global.set(\"display2\", {\n        timestamp: new Date().toLocaleString(\"pt-BR\", {timeZone: \"America/Sao_Paulo\"}),\n        tmax: tmax,\n        tmin: tmin,\n        umax: umax,\n        umin: umin,\n        periodoHoras: periodoHoras\n    });\n}\n\nnode.status({\n    fill: \"green\",\n    shape: \"dot\",\n    text: \"T:\" + temperatura + \"°C U:\" + umidade + \"% [\" + historico.length + \"]\"\n});\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "e0b5f7a3b2c4d5e6"
+            ]
+        ]
+    },
+    {
+        "id": "b0bfb0cfcb9fde3b",
+        "type": "ui-template",
+        "z": "255efaf03868a262",
+        "group": "97625f0f0f538b78",
+        "page": "",
+        "ui": "",
+        "name": "📊 Stats Cards",
+        "order": 1,
+        "width": "12",
+        "height": "3",
+        "format": "<template>\n  <div class=\"stats-grid\">\n    <div class=\"card temp-avg\"><h4>🌡️ Avg</h4><p>{{msg.payload.stats.avgTemp}}°C</p></div>\n    <div class=\"card humid-avg\"><h4>💧 Avg</h4><p>{{msg.payload.stats.avgHumid}}%</p></div>\n    <div class=\"card temp-max\"><h4>🔥 Max</h4><p>{{msg.payload.stats.maxTemp}}°C</p></div>\n    <div class=\"card temp-min\"><h4>❄️ Min</h4><p>{{msg.payload.stats.minTemp}}°C</p></div>\n    <div class=\"card humid-max\"><h4>🌧️ Max</h4><p>{{msg.payload.stats.maxHumid}}%</p></div>\n    <div class=\"card humid-min\"><h4>☀️ Min</h4><p>{{msg.payload.stats.minHumid}}%</p></div>\n  </div>\n  <br>\n  <p class=\"footer\">📅 {{msg.payload.stats.timestamp}} | ⏱️ {{msg.payload.stats.period}}h</p>\n</template>\n<style>\n  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }\n  .card { padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }\n  .card h4 { margin: 0 0 5px 0; font-size: 14px; }\n  .card p { margin: 0; font-size: 24px; font-weight: bold; }\n  .temp-avg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }\n  .humid-avg { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }\n  .temp-max { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }\n  .temp-min { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }\n  .humid-max { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }\n  .humid-min { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }\n  .footer { text-align: center; margin-top: 10px; font-size: 12px; color: #666; }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1220,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f8057dc9f823e41",
+        "type": "inject",
+        "z": "255efaf03868a262",
+        "name": "🔄 Refresh Stats",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 550,
+        "y": 40,
+        "wires": [
+            [
+                "e0b5f7a3b2c4d5e6"
+            ]
+        ]
+    },
+    {
+        "id": "4f1f52ea4fada317",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Capt Chat ID",
+        "func": "var chatId=msg.payload.chatId;\nvar chatType=msg.payload.chat?.type||\"private\";\nvar chatTitle=msg.payload.chat?.title||\"N/A\";\nvar username=msg.payload.from?.username||\"sem_username\";\nvar firstName=msg.payload.from?.first_name||\"Usuário\";\n\nnode.warn(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\nnode.warn(\"📱 Novo contato: \"+chatId);\nnode.warn(\"Tipo: \"+chatType);\n\nif(chatType===\"group\"||chatType===\"supergroup\"){\n    node.warn(\"Nome do Grupo: \"+chatTitle);\n    node.warn(\"👥 Este é um GRUPO - use este ID!\");\n    global.set(\"groupChatId\",chatId);\n    msg.payload={\n        chatId:chatId,\n        type:\"message\",\n        content:\"✅ *Grupo Registrado!*\\n\\n📋 Nome: \"+chatTitle+\"\\n🆔 Chat ID: `\"+chatId+\"`\\n\\nTodos os membros receberão notificações automáticas!\",\n        parse_mode:\"Markdown\"\n    };\n}else{\n    node.warn(\"Username: @\"+username);\n    node.warn(\"Nome: \"+firstName);\n    node.warn(\"👤 Este é um chat INDIVIDUAL\");\n    var chatIds=global.get(\"chatIds\")||[];\n    if(chatIds.includes(chatId)){\n        node.warn(\"⚠️ Usuário JÁ registrado - SEM mensagem!\");\n        return null;\n    }\n    chatIds.push(chatId);\n    global.set(\"chatIds\",chatIds);\n    node.warn(\"✓ Usuário adicionado à lista!\");\n    msg.payload={\n        chatId:chatId,\n        type:\"message\",\n        content:\"✅ *Registrado com Sucesso!*\\n\\n👤 Nome: \"+firstName+\"\\n🆔 Seu Chat ID: `\"+chatId+\"`\\n\\nVocê receberá notificações do sensor DHT22!\",\n        parse_mode:\"Markdown\"\n    };\n}\n\nnode.warn(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 200,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "2ecbd811a4c4d696",
+        "type": "telegram receiver",
+        "z": "255efaf03868a262",
+        "name": "Telegram Receiver",
+        "bot": "b71b064713be8c8a",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 1370,
+        "y": 220,
+        "wires": [
+            [
+                "4f1f52ea4fada317",
+                "e01d1daf381db0f2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a24914dc5d411d9a",
+        "type": "telegram sender",
+        "z": "255efaf03868a262",
+        "name": "Telegram Sender",
+        "bot": "b71b064713be8c8a",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1890,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa8f0feec625d018",
+        "type": "debug",
+        "z": "255efaf03868a262",
+        "name": "debug telegram",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2edf8e1c57522dc4",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Dados",
+        "command": "/Dados",
+        "description": "Última medição do sensor",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 280,
+        "wires": [
+            [
+                "9afc19e3ffa0a849"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9afc19e3ffa0a849",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Responder Dados",
+        "func": "var dados = global.get(\"ultimaMedicao\") || null;\nvar chatId = msg.payload.chatId;\n\nif (!dados || dados.temperatura === undefined) {\n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: \"❌ Nenhuma medição disponível ainda.\\n\\n\" +\n                 \"Aguarde alguns segundos para a primeira leitura do sensor.\"\n    };\n} else {\n    var tempo = new Date(dados.timestamp);\n    var tempoFormatado = tempo.toLocaleString(\"pt-BR\", {timeZone: \"America/Sao_Paulo\"});\n    \n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: `📊 *Última Medição do Sensor*\\n\\n` +\n                 `🌡️ Temperatura: *${dados.temperatura}°C*\\n` +\n                 `💧 Umidade: *${dados.umidade}%*\\n` +\n                 `🕐 Horário: ${tempoFormatado}\\n\\n` +\n                 `_Use /Media para ver a média das últimas horas_`,\n        parse_mode: \"Markdown\"\n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 300,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "e752549e930543fa",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Média",
+        "command": "/Média",
+        "description": "Média do período",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 380,
+        "wires": [
+            [
+                "54301c6dd0f6a82a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "54301c6dd0f6a82a",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Responder Média",
+        "func": "var media = global.get(\"media24h\") || null;\nvar historico = global.get(\"historico\") || [];\nvar chatId = msg.payload.chatId;\n\nif (!media || media.temperatura === undefined) {\n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: \"❌ Dados insuficientes para calcular média.\\n\\n\" +\n                 \"É necessário pelo menos 1 leitura no histórico.\"\n    };\n} else {\n    var horas = (historico.length * 3 / 60).toFixed(1);\n    \n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: `📈 *Estatísticas do Período*\\n\\n` +\n                 `⏱️ Período: ${horas} horas\\n` +\n                 `📝 Total de leituras: ${media.quantidadeLeituras}\\n\\n` +\n                 `🌡️ *Temperatura Média*\\n` +\n                 `   └ ${media.temperatura}°C\\n\\n` +\n                 `💧 *Umidade Média*\\n` +\n                 `   └ ${media.umidade}%\\n\\n` +\n                 `_Use /Display2 para ver máximas e mínimas_`,\n        parse_mode: \"Markdown\"\n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1590,
+        "y": 420,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "324228d497bc3fcf",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Display2",
+        "command": "/Display2",
+        "description": "Estatísticas completas",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1370,
+        "y": 520,
+        "wires": [
+            [
+                "b656a8e504b7d029"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b656a8e504b7d029",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Responder Display2",
+        "func": "var dados = global.get(\"display2\") || null;\nvar chatId = msg.payload.chatId;\n\nif (!dados || dados.tmax === undefined) {\n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: \"❌ Dados do Display 2 não disponíveis.\"\n    };\n} else {\n    var variTemp = (dados.tmax - dados.tmin).toFixed(1);\n    var variUmid = (dados.umax - dados.umin).toFixed(1);\n    \n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: `📊 *Estatísticas Completas*\\n\\n` +\n                 `📅 Atualizado: ${dados.timestamp}\\n` +\n                 `⏱️ Período: ${dados.periodoHoras}h\\n\\n` +\n                 `🌡️ *Temperatura*\\n` +\n                 `   • Máx: ${dados.tmax}°C\\n` +\n                 `   • Mín: ${dados.tmin}°C\\n` +\n                 `   • Variação: ${variTemp}°C\\n\\n` +\n                 `💧 *Umidade*\\n` +\n                 `   • Máx: ${dados.umax}%\\n` +\n                 `   • Mín: ${dados.umin}%\\n` +\n                 `   • Variação: ${variUmid}%`,\n        parse_mode: \"Markdown\"\n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1600,
+        "y": 520,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "8352461bed67f9ee",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Status",
+        "command": "/Status",
+        "description": "Status do sistema",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 580,
+        "wires": [
+            [
+                "1ee91c839a6dc0fe"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "1ee91c839a6dc0fe",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Responder Status",
+        "func": "var chatId = msg.payload.chatId;\nvar ultimaMedicao = global.get(\"ultimaMedicao\");\nvar historico = global.get(\"historico\") || [];\nvar groupChatId = global.get(\"groupChatId\");\nvar chatIds = global.get(\"chatIds\") || [];\n\nvar statusSensor = ultimaMedicao ? \"🟢 Online\" : \"🔴 Offline\";\nvar statusGrupo = groupChatId ? \"👥 Grupo ativo\" : \"👤 Modo individual\";\nvar totalUsuarios = groupChatId ? \"Grupo único\" : chatIds.length + \" usuários\";\n\nmsg.payload = {\n    chatId: chatId,\n    type: \"message\",\n    content: `⚙️ *Status do Sistema*\\n\\n` +\n             `📡 Sensor DHT22: ${statusSensor}\\n` +\n             `📊 Histórico: ${historico.length} leituras\\n` +\n             `👥 Modo: ${statusGrupo}\\n` +\n             `📱 Destinatários: ${totalUsuarios}\\n\\n` +\n             `_Última atualização: ${new Date().toLocaleString(\"pt-BR\")}_`,\n    parse_mode: \"Markdown\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 580,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "44a7f85b76c1d03d",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Ajuda",
+        "command": "/Ajuda",
+        "description": "Menu de ajuda",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "88b60f26e4b9f22d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "88b60f26e4b9f22d",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Responder Ajuda",
+        "func": "var chatId = msg.payload.chatId;\n\nmsg.payload = {\n    chatId: chatId,\n    type: \"message\",\n    content: `🤖 *Bot de Monitoramento DHT22*\\n\\n` +\n             `*Comandos Disponíveis:*\\n\\n` +\n             `/Dados - Última medição do sensor\\n` +\n             `/Media - Média do período monitorado\\n` +\n             `/Display2 - Estatísticas completas\\n` +\n             `/Status - Status do sistema\\n` +\n             `/Ajuda - Mostra esta mensagem\\n\\n` +\n             `📊 *Relatórios Automáticos:*\\n` +\n             `• Diariamente às 20h40\\n\\n` +\n             `💡 *Dica:* Use os comandos a qualquer momento!`,\n    parse_mode: \"Markdown\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 640,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "7ebf32a52f7f9ff5",
+        "type": "inject",
+        "z": "255efaf03868a262",
+        "name": "Agendamento 20h40",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "40 20 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1370,
+        "y": 760,
+        "wires": [
+            [
+                "8c5ed73e6a5984f9"
+            ]
+        ]
+    },
+    {
+        "id": "8c5ed73e6a5984f9",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Montar Relatório Diário",
+        "func": "var dados = global.get(\"display2\") || null;\nvar groupChatId = global.get(\"groupChatId\");\nvar destinoChatId = groupChatId || 8320613648;\n\nif (!dados || dados.tmax === undefined) {\n    msg.payload = {\n        chatId: destinoChatId,\n        type: \"message\",\n        content: \"⚠️ *Relatório Diário*\\n\\n\" +\n                 \"Dados do Display 2 não estão disponíveis no momento.\\n\" +\n                 \"Aguarde novas leituras do sensor.\"\n    };\n} else {\n    msg.payload = {\n        chatId: destinoChatId,\n        type: \"message\",\n        content: `📊 *RELATÓRIO DIÁRIO - DHT22*\\n` +\n                 `${'═'.repeat(30)}\\n\\n` +\n                 `📅 *Data/Hora:* ${dados.timestamp}\\n` +\n                 `⏱️ *Período:* ${dados.periodoHoras} horas\\n\\n` +\n                 `🌡️ *TEMPERATURA*\\n` +\n                 `   • Máxima: ${dados.tmax}°C 🔴\\n` +\n                 `   • Mínima: ${dados.tmin}°C 🔵\\n\\n` +\n                 `💧 *UMIDADE*\\n` +\n                 `   • Máxima: ${dados.umax}% 💦\\n` +\n                 `   • Mínima: ${dados.umin}% ☀️\\n\\n` +\n                 `${'═'.repeat(30)}\\n` +\n                 `_Relatório automático enviado às 20h40_`,\n        parse_mode: \"Markdown\"\n    };\n}\n\nif (!groupChatId) {\n    var chatIds = global.get(\"chatIds\") || [8320613648];\n    \n    if (chatIds.length > 1) {\n        var mensagens = [];\n        chatIds.forEach(function(chatId) {\n            mensagens.push({\n                payload: {\n                    chatId: chatId,\n                    type: \"message\",\n                    content: msg.payload.content,\n                    parse_mode: \"Markdown\"\n                }\n            });\n        });\n        return [mensagens];\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1610,
+        "y": 760,
+        "wires": [
+            [
+                "a24914dc5d411d9a",
+                "aa8f0feec625d018"
+            ]
+        ]
+    },
+    {
+        "id": "b3d41f25aa6352a2",
+        "type": "inject",
+        "z": "255efaf03868a262",
+        "name": "Configurar ao iniciar",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1380,
+        "y": 700,
+        "wires": [
+            [
+                "8a99a25061d2c22d"
+            ]
+        ]
+    },
+    {
+        "id": "8a99a25061d2c22d",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Configuração Inicial",
+        "func": "// Inicializa variáveis globais se não existirem\nif (!global.get(\"historico\")) {\n    global.set(\"historico\", []);\n    node.warn(\"✓ Histórico inicializado\");\n}\n\nif (!global.get(\"chatIds\")) {\n    global.set(\"chatIds\", [8320613648]); // Seu ID como padrão\n    node.warn(\"✓ Lista de Chat IDs inicializada\");\n}\n\nnode.warn(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\nnode.warn(\"✅ Sistema inicializado!\");\nnode.warn(\"📱 Aguardando conexões...\");\nnode.warn(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1600,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0b5f7a3b2c4d5e6",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "📊 Formatar Stats Dashboard",
+        "func": "// Pega dados globais\nlet media = global.get(\"media24h\") || {temperatura: 0, umidade: 0, quantidadeLeituras: 0};\nlet display = global.get(\"display2\") || {tmax: 0, tmin: 0, umax: 0, umin: 0, periodoHoras: 0, timestamp: new Date().toLocaleString()};\nlet historico = global.get(\"historico\") || [];\n\n// OUTPUT 1: Cards de Estatísticas\nlet msg1 = {\n    payload: {\n        stats: {\n            avgTemp: media.temperatura,\n            avgHumid: media.umidade,\n            maxTemp: display.tmax,\n            minTemp: display.tmin,\n            maxHumid: display.umax,\n            minHumid: display.umin,\n            timestamp: display.timestamp,\n            period: display.periodoHoras\n        }\n    }\n};\n\n// OUTPUT 2: Tabela Recente - MAIS RECENTE NO TOPO! ⬆️\nlet tabelaDados = historico.slice(-10).reverse().map((item, index) => ({\n    time: new Date(item.timestamp).toLocaleTimeString('pt-BR'),\n    temp: Number(item.temperatura).toFixed(1),\n    humid: Number(item.umidade).toFixed(1)\n}));\n\nlet msg2 = { payload: tabelaDados };\n\n// OUTPUT 3: Gráfico Temperatura\nlet graficoTemp = historico.slice(-50).map(item => ({\n    x: new Date(item.timestamp),\n    y: Number(item.temperatura)\n}));\n\nlet msg3 = {\n    topic: \"🌡️ Temp\",\n    payload: graficoTemp\n};\n\n// OUTPUT 4: Gráfico Umidade\nlet graficoUmid = historico.slice(-50).map(item => ({\n    x: new Date(item.timestamp),\n    y: Number(item.umidade)\n}));\n\nlet msg4 = {\n    topic: \"💧 Humid\", \n    payload: graficoUmid\n};\n\nnode.status({\n    fill: \"green\",\n    shape: \"dot\",\n    text: `Hist:${historico.length} | Tbl:${tabelaDados.length} | Grf:${graficoTemp.length}`\n});\n\nreturn [msg1, msg2, msg3, msg4];",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 100,
+        "wires": [
+            [
+                "b0bfb0cfcb9fde3b"
+            ],
+            [
+                "a9b8c7d6e5f4a3b2"
+            ],
+            [
+                "b3c4d5e6f7a8b9c0"
+            ],
+            [
+                "b3c4d5e6f7a8b9c0"
+            ]
+        ]
+    },
+    {
+        "id": "b3c4d5e6f7a8b9c0",
+        "type": "ui-chart",
+        "z": "255efaf03868a262",
+        "group": "97625f0f0f538b78",
+        "name": "Combined Chart",
+        "label": "📈 Combined Trend (1h)",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Temp (°C)",
+        "yAxisProperty": "y",
+        "yAxisPropertyType": "property",
+        "ymin": "0",
+        "ymax": "50",
+        "bins": "",
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 3,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#ff7300",
+            "#0095ff",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 12,
+        "height": "5",
+        "className": "",
+        "interpolation": "linear",
+        "x": 1220,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a9b8c7d6e5f4a3b2",
+        "type": "ui-table",
+        "z": "255efaf03868a262",
+        "group": "97625f0f0f538b78",
+        "name": "Recent History",
+        "label": "",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "maxrows": "10",
+        "autocols": true,
+        "showSearch": false,
+        "deselect": true,
+        "selectionType": "none",
+        "columns": [
+            {
+                "title": "🕐 Hora",
+                "key": "",
+                "keyType": "key",
+                "width": "25%"
+            },
+            {
+                "title": "🌡️ Temp",
+                "key": "",
+                "keyType": "key",
+                "width": "37.5%"
+            },
+            {
+                "title": "💧 Humid",
+                "key": "",
+                "keyType": "key",
+                "width": "37.5%"
+            }
+        ],
+        "mobileBreakpoint": "",
+        "mobileBreakpointType": "none",
+        "action": "append",
+        "x": 1220,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "712f0843b07e7c5c",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Dados",
+        "command": "/dados",
+        "description": "Última medição do sensor",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 320,
+        "wires": [
+            [
+                "9afc19e3ffa0a849"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "90932491ba80c2fb",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Média",
+        "command": "/media",
+        "description": "Média do período",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 420,
+        "wires": [
+            [
+                "54301c6dd0f6a82a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e5eb8792987a4369",
+        "type": "telegram command",
+        "z": "255efaf03868a262",
+        "name": "Comando /Média",
+        "command": "/média",
+        "description": "Média do período",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "b71b064713be8c8a",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 460,
+        "wires": [
+            [
+                "54301c6dd0f6a82a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4480d35d6e65e64b",
+        "type": "telegram event",
+        "z": "255efaf03868a262",
+        "name": "Monitor Bot Action",
+        "bot": "b71b064713be8c8a",
+        "event": "callback_query",
+        "autoanswer": false,
+        "x": 850,
+        "y": 660,
+        "wires": [
+            [
+                "b535037036314b2d"
+            ]
+        ]
+    },
+    {
+        "id": "e01d1daf381db0f2",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "Get Desired Bot Function",
+        "func": "var chatId = msg.payload.chatId;\nvar buttons = [];\nbuttons.push(\n    [\n        {\n            text: \"Ajuda\",\n            callback_data : \"/Ajuda\"\n        }\n    ],\n    [\n        {\n            text: \"Dados\",\n            callback_data : \"/Dados\"\n        }\n    ],\n    [\n        {\n            text: \"Média\",\n            callback_data : \"/Média\"\n        }\n    ],\n    [\n        {\n            text: \"Display2\",\n            callback_data : \"/Display2\"\n        }\n    ],\n    [\n        {\n            text: \"Status\",\n            callback_data : \"/Status\"\n        }\n    ]\n);\nmsg.payload = {\n    type : \"message\",\n    content : \"escolha um comando\",\n    chatId : chatId,\n    options : {\n        parse_mode : \"Markdown\",\n        reply_markup : JSON.stringify({\n            remove_keyboard : true,\n            inline_keyboard : buttons\n        })\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1630,
+        "y": 240,
+        "wires": [
+            [
+                "a24914dc5d411d9a"
+            ]
+        ]
+    },
+    {
+        "id": "b535037036314b2d",
+        "type": "switch",
+        "z": "255efaf03868a262",
+        "name": "Clicked Bot Function",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/Ajuda",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/Dados",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/Média",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/Display2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/Status",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1100,
+        "y": 660,
+        "wires": [
+            [
+                "88b60f26e4b9f22d"
+            ],
+            [
+                "9afc19e3ffa0a849"
+            ],
+            [
+                "54301c6dd0f6a82a"
+            ],
+            [
+                "b656a8e504b7d029"
+            ],
+            [
+                "1ee91c839a6dc0fe"
+            ]
+        ]
+    },
+    {
+        "id": "e5644dfdcab84437",
+        "type": "ui-markdown",
+        "z": "255efaf03868a262",
+        "group": "58b04e07090bca54",
+        "name": "Github link",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "content": "[📲 GitHub Project](https://github.com/henri-engineer/Temperature-Humidity-Telegram/tree/main)",
+        "className": "",
+        "x": 990,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b3bba3993788e94",
+        "type": "ui-button",
+        "z": "255efaf03868a262",
+        "group": "97625f0f0f538b78",
+        "name": "Clear Btn",
+        "label": "Clear",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1140,
+        "y": 280,
+        "wires": [
+            [
+                "3c2f30b2dbbaf8e9"
+            ]
+        ]
+    },
+    {
+        "id": "3c2f30b2dbbaf8e9",
+        "type": "function",
+        "z": "255efaf03868a262",
+        "name": "clear",
+        "func": "global.set('historicoLeituras', []);\nmsg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 200,
+        "wires": [
+            [
+                "a9b8c7d6e5f4a3b2",
+                "b3c4d5e6f7a8b9c0"
+            ]
+        ]
+    },
+    {
+        "id": "c86fefbcb4da4644",
+        "type": "ui-markdown",
+        "z": "255efaf03868a262",
+        "group": "58b04e07090bca54",
+        "name": "README file",
+        "order": 5,
+        "width": "3",
+        "height": "1",
+        "content": "[📑 README file](https://github.com/henri-engineer/Temperature-Humidity-Telegram/blob/main/README.md)",
+        "className": "",
+        "x": 990,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0bad7f309a75c60d",
+        "type": "ui-markdown",
+        "z": "255efaf03868a262",
+        "group": "58b04e07090bca54",
+        "name": "Talk to ENKI Bot",
+        "order": 4,
+        "width": "3",
+        "height": "1",
+        "content": "[🔛 Talk to the Bot](https://web.telegram.org/k/#@cp03morgsbot)",
+        "className": "",
+        "x": 1000,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "78bde57542f414d1",
+        "type": "mqtt-broker",
+        "name": "MQTT Mosquito",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2667965c1ca681c6",
+        "type": "ui-group",
+        "name": "♨️ Temperature",
+        "page": "8c2de7cb2e385cd8",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "58b04e07090bca54",
+        "type": "ui-group",
+        "name": "CP03 - Header",
+        "page": "8c2de7cb2e385cd8",
+        "width": "12",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "264fd145aa2e9f8b",
+        "type": "ui-group",
+        "name": "💦Humidity",
+        "page": "8c2de7cb2e385cd8",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "97625f0f0f538b78",
+        "type": "ui-group",
+        "name": "📊 Complete Statistics",
+        "page": "8c2de7cb2e385cd8",
+        "width": 12,
+        "height": "11",
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b71b064713be8c8a",
+        "type": "telegram bot",
+        "botname": "cp03morgsbot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "8c2de7cb2e385cd8",
+        "type": "ui-page",
+        "name": "CP03 - Smart ♨️Temp & 💦 Humidity",
+        "ui": "fb026497e3258b13",
+        "path": "/cp03",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "5075a7d8e4947586",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "fb026497e3258b13",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "https://newpartselevator.com.br/assets/img/favicon/favicon-16x16.png",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "5075a7d8e4947586",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "5da2224d33765e57",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.27.2",
+            "node-red-contrib-telegrambot": "16.3.3"
+        }
+    }
+]
